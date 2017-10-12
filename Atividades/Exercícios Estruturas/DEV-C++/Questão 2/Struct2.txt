@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+/*2. Escrever um programa que cadastre o nome, a altura, o
+peso, o cpf e sexo de algumas pessoas. Com os dados
+cadastrados, em seguida localizar uma pessoas através
+do seu CPF e imprimir o seu IMC (peso (quilos) ÷ altura2
+(metros)).
+*/
+
+struct Pessoa{
+	char[40] nome;
+	float altura;
+	float peso;
+	char[20] cpf;
+	char[20] sexo;
+};
+
+int main(int argc, char *argv[]) {
+	int qtdPessoas, i;
+	float imc;
+	char[20] localizarCpf;
+	printf("Digite a quantidade de pessoas que deseja cadastrar: ");
+	scanf("%d", qtdPessoas);
+	struct Pessoa pessoas[qtdPessoas];
+ 
+	for (i = 0; i < qtdPessoas; i++){
+		printf("Digite o nome da %dº pessoa: ", i + 1);
+		strcpy(pessoas[i].nome, gets());
+		printf("Digite a altura da %dº pessoa: ", i + 1);
+		scanf("%f", pessoas[i].altura);
+		printf("Digite o peso da %dº pessoa: ", i + 1);
+		scanf("%f", pessoas[i].peso);
+		printf("Digite o CPF da %dº pessoa: ", i + 1);
+		strcpy(pessoas[i].cpf, gets());		
+		printf("Digite o sexo da %dº pessoa: ", i + 1);
+		strcpy(pessoas[i].sexo, gets());		
+	}
+	printf("Digite o cpf da pessoa que deseja obter o IMC: ");
+	gets(localizarCpf);
+	
+	for (i = 0; i < qtdPessoas; i++){
+		if (localizarCpf == pessoas[i].cpf){
+			imc = (pessoas[i].peso / (pessoas.altura * pessoas.altura);
+			printf("IMC de %s: %f", pessoas[i].nome, imc);
+		}
+	}
+	
+	return 0;
+}
